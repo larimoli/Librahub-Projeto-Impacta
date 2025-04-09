@@ -6,12 +6,13 @@
     <!-- Link para os ícones do FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Link para o CSS externo -->
-    <link rel="stylesheet" href="/client/assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pesquisa.css">
     <!-- Ícone do site (favicon) -->
     <link rel="shortcut icon" href="img/favicon/L -favicon.png" type="image/x-icon">
     <title>LibraHub</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="/client/scripts/script.js"></script>
+    <script type="module" src="scripts/script.js"></script>
 </head>
 <body>
 
@@ -25,7 +26,7 @@
             <!-- Ícones de navegação -->
             <div class="botao">
                 <nav class="icone">
-                    <a href="#" aria-label="Pesquisar"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="pesquisa.html" target="_self" aria-label="Pesquisar"><i class="fa-solid fa-magnifying-glass"></i></a>
                     <a href="#" id="openModal" aria-label="Abrir cadastro"><i class="fa-solid fa-plus"></i></a>
                 </nav>
             </div>    
@@ -34,7 +35,7 @@
 
     <!-- Modal (caixa de cadastro) -->
     <div id="myModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-cadastro">
             <span class="close" id="closeModal">&times;</span>
             <main class="cadastro">
                 <form action="#">
@@ -81,11 +82,13 @@
     </div>
 
     <!-- Mensagem de Sucesso ou Erro -->
-    <div id="mensagem" class="mensagem"></div>    
+    <div id="mensagem" class="mensagem"></div> 
+
+    <script src="scripts/pesquisa.js"></script>
 
     <main>
         <div class="livro">
-            <img src="/client/assets/img/livro.png" alt="imagem de livro aberto">
+            <img src="assets/img/librahub-novo.png" alt="imagem de livro aberto">
         </div>
     </main>
 </body>

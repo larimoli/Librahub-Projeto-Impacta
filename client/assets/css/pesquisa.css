@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+main {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+.content-wrapper {
+    width: 100%;
+    max-width: 1080px;
+}
+  
+.search-area input {
+    width: 100%; 
+    padding: 0.8rem 1rem;
+    border: none;
+    font-size: 1rem;
+    text-align: center; 
+    background-color: var(--color04);
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.search-area input:focus {
+    outline: none;
+    color: black;
+}
+
+.search-area input::placeholder {
+    color: #3d3d3d9a;
+    font-family: 'Arial', sans-serif; /* ou a fonte que quiser */
+    font-size: 1rem;
+    font-weight: 600;
+}
+  
+.book-container {
+  margin: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-header, .info-data {
+  display: flex;
+  justify-content: space-between; /* Espaça os itens uniformemente */
+}
+
+.info-title, .info-text {
+  flex: 1; 
+}
+
+.info-title {
+  font-weight: bold;
+  text-align: left;
+  display: block; /* Mantém o texto em bloco */
+  font-weight: bold;
+  margin-bottom: 5px; /* Espaçamento entre o título e o texto */
+  margin-left: 15px;
+  margin-top: 10px;
+  font-family: "Hammersmith One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.info-text {
+  text-align: justify;
+  display: block; /* Garante que o texto também seja um bloco */
+  margin-bottom: 0; /* Remove espaçamento extra inferior */
+  margin-left: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 18px;
+}
