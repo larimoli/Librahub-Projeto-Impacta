@@ -1,8 +1,13 @@
 // Função para buscar os livros
 async function getBooks() {
-    const response = await fetch('/api/books'); // Endpoint da sua API
-    const books = await response.json();
+  try {
+    const response = await axios.get('http://localhost:8800/books'); 
+    const books = response.data;
     renderBooks(books);
+  } catch (error) {
+    console.error('Erro ao buscar os livros:', error)
+  }
+   
   }
   
   // Função para renderizar os livros na div
@@ -10,12 +15,25 @@ async function getBooks() {
     const container = document.getElementById('books-container');
     container.innerHTML = ''; // Limpar conteúdo anterior
     books.forEach(book => {
+      const releaseYear = new Date(book.lancamento).getFullYear(); 
       const bookDiv = document.createElement('div');
+      bookDiv.classList.add('book-container');
       bookDiv.innerHTML = `
-        <p><strong>Título:</strong> ${book.title}</p>
-        <p><strong>Lançamento:</strong> ${book.releaseDate}</p>
-        <p><strong>Disponível:</strong> ${book.available ? 'Sim' : 'Não'}</p>
-        <p><strong>Autor:</strong> ${book.author}</p>
+         <div class="info-box">
+            <div class="info-header">
+                <div class="info-title">TÍTULO</div>
+                <div class="info-title">AUTOR</div>
+                <div class="info-title">LANÇAMENTO</div>
+                <div class="info-title">DISPONÍVEL</div>
+            </div>
+            <div class="info-data">
+                <div class="info-text">${book.nome}</div>
+                <div class="info-text">${book.autor}</div>
+                <div class="info-text">${releaseYear}</div>
+                <div class="info-text">${book.disponivel ? 'Sim' : 'Não'}</div>
+            </div>
+
+      </div>       
       `;
       container.appendChild(bookDiv);
     });
@@ -23,13 +41,18 @@ async function getBooks() {
   
   // Função para buscar por título
   async function searchBooks() {
-    const searchValue = document.getElementById('search').value.toLowerCase();
-    const response = await fetch('/api/books'); // Endpoint da sua API
-    const books = await response.json();
-    const filteredBooks = books.filter(book => 
-      book.title.toLowerCase().includes(searchValue)
-    );
-    renderBooks(filteredBooks);
+    try {
+      const searchValue = document.getElementById('search').value.toLowerCase();
+      const response = await axios.get('http://localhost:8800/books'); 
+      const books = response.data;
+      const filteredBooks = books.filter(book => 
+        book.nome.toLowerCase().includes(searchValue)
+      );
+      renderBooks(filteredBooks);
+    } catch (error) {
+      console.error('Erro ao buscar livros por título:', error)
+    }
+    
   }
   
   // Buscar os livros ao carregar a página
