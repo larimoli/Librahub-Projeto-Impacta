@@ -81,3 +81,298 @@ main {
   font-style: normal;
   font-size: 18px;
 }
+
+/*Modal de Disponibilidade*/
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço entre os botões */
+}
+
+
+.info-text-with-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre o texto e os botões */
+  justify-content: space-between; /* Opcional: empurra os botões para a direita */
+}
+
+
+.edit-btn,
+.delete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px; /* Ajuste o tamanho do círculo conforme necessário */
+  height: 35px; /* Ajuste o tamanho do círculo conforme necessário */
+  padding: 0; /* Remove o padding para o ícone preencher o círculo */
+  border: none;
+  border-radius: 50%; /* Deixa o botão redondo */
+  cursor: pointer;
+  font-size: 16px; /* Ajuste o tamanho do ícone conforme necessário */
+  color: white;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* Transição suave para a interatividade */
+}
+
+.edit-btn {
+  background-color: #8e44ad;
+   /* Cor roxa */
+}
+
+.delete-btn {
+  background-color: #e74c3c; /* Cor vermelha */
+  
+}
+
+.edit-btn:hover {
+  background-color: #7a3795; /* Tom mais escuro de roxo para o hover */
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b; /* Tom mais escuro de vermelho para o hover */
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.edit-btn i,
+.delete-btn i {
+  font-size: 18px; /* Ajuste o tamanho dos ícones dentro dos círculos */
+}
+
+/* Modal geral */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Conteúdo específico do modal de edição */
+.modal-edit-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 40%;
+  max-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeInModalEdit 0.3s ease-in-out;
+}
+
+@keyframes fadeInModalEdit {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -55%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Header do modal */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-header h2 {
+  font-size: 22px;
+  color: #333;
+  margin: 0;
+}
+
+.close {
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+.close:hover {
+  color: black;
+}
+
+/* Campos do formulário */
+.input-box {
+  margin-bottom: 15px;
+}
+
+.input-box label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-box input,
+.input-box select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+.input-box input:focus,
+.input-box select:focus {
+  border-color: #8e44ad;
+  outline: none;
+}
+
+/* Botões de ação */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cancel-btn {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background: transparent;
+  color: #333;
+  transition: background 0.3s;
+}
+
+.cancel-btn:hover {
+  background-color: #f2f2f2;
+}
+
+.save-btn {
+  padding: 8px 15px;
+  background-color: #8e44ad;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.save-btn:hover {
+  background-color: #7a3795;
+}
+
+/*Modal de Exclusão*/
+.modal-exclusao {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0s ease-in-out;
+}
+
+.modal-exclusao.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-exclusao.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  text-align: center;
+  position: relative;
+  animation: fadeInModalDelete 0.3s ease-in-out;
+}
+
+@keyframes fadeInModalDelete{
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content p {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 15px;
+}
+
+.modal-exclusao button {
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: transparent;
+  transition: background 0.3s;
+}
+
+.modal-exclusao button:hover {
+  background-color: #f2f2f2;
+}
+
+#confirmDelete:hover {
+  background-color: rgba(255, 0, 0, 0.788);
+  color: #fff;
+}
+
+.message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 16px;
+  z-index: 1100;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  text-align: center;
+}
+
+.message.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
