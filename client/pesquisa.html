@@ -47,6 +47,62 @@
    
     </main>
 
+
+    <!-- Modal de Edição -->
+<div id="editModal" class="modal">
+    <div class="modal-edit-content">
+      <div class="modal-header">
+        <h2>Editar Livro</h2>
+        <span class="close" onclick="closeEditModal()">&times;</span>
+      </div>
+      <form id="editForm">
+        <input type="hidden" id="editId" />
+  
+        <div class="input-box">
+          <label for="editNome">Título:</label>
+          <input type="text" id="editNome" required />
+        </div>
+  
+        <div class="input-box">
+          <label for="editAutor">Autor:</label>
+          <input type="text" id="editAutor" required />
+        </div>
+  
+        <div class="input-box">
+          <label for="editLancamento">Lançamento:</label>
+          <input type="date" id="editLancamento" required />
+        </div>
+  
+        <div class="input-box">
+          <label for="editDisponivel">Disponível:</label>
+          <select id="editDisponivel" required>
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+          </select>
+        </div>
+  
+        <div class="modal-actions">
+          <button type="button" class="cancel-btn" onclick="closeEditModal()">Cancelar</button>
+          <button type="submit" class="save-btn">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!--Modal de Mensagem de Exclusão-->
+  <div id="deleteModal" class="modal-exclusao">
+    <div class="modal-content">
+      <p>Tem certeza que deseja excluir este livro?</p>
+      <button id="confirmDelete">Excluir</button>
+      <button id="cancelDelete">Cancelar</button>
+    </div>
+  </div>
+
+  <!--Notificação de Livro Excluido com Sucesso-->
+  <div id="message" class="message"></div>
+  
+
     <script src="scripts/pesquisa.js"></script>
 
 </body>    
