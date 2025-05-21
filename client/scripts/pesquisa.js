@@ -179,4 +179,23 @@ function showMessage(text, duration = 5000) {
   }, duration);
 }
 
+// Section de Emprestimo de Livro
+
+document.getElementById("editDisponivel").addEventListener("change", function () {
+  const emprestimoSection = document.getElementById("emprestimoSection");
+
+  if (this.value === "false") {
+    emprestimoSection.style.display = "block";
+  } else {
+    emprestimoSection.style.display = "none"
+
+    // Limpa os campos se for marcado como "Sim"
+    document.getElementById("nome").value = "";
+    document.getElementById("endereco").value = "";
+    document.getElementById("telefone").value = "";
+    document.getElementById("cpf").value = "";
+    document.getElementById("dataEmprestimo").value = "";
+    document.getElementById("dataDevolucao").value = "";
+  }
+});
 
