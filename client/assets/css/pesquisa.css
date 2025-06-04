@@ -82,16 +82,6 @@ main {
   font-size: 18px;
 }
 
-/*Modal de Disponibilidade*/
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
-  text-align: center;
-}
-
 .action-buttons {
   display: flex;
   align-items: center;
@@ -309,16 +299,6 @@ main {
   visibility: hidden;
 }
 
-.modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 30%;
-  text-align: center;
-  position: relative;
-  animation: fadeInModalDelete 0.3s ease-in-out;
-}
-
 @keyframes fadeInModalDelete{
   from {
     opacity: 0;
@@ -333,6 +313,11 @@ main {
 .modal-content p {
   font-family: Arial, Helvetica, sans-serif;
   padding: 15px;
+  text-align: left;
+}
+
+.button-exclusao {
+  text-align: center;
 }
 
 .modal-exclusao button {
@@ -346,6 +331,10 @@ main {
 
 .modal-exclusao button:hover {
   background-color: #f2f2f2;
+}
+
+#paragrafo-exclusao {
+  text-align: center;
 }
 
 #confirmDelete:hover {
@@ -376,6 +365,27 @@ main {
 }
 
 
+/*Modal de Emprestimo*/
+
+.modal-content {
+  font-family: Arial, Helvetica, sans-serif;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  position: absolute;
+  text-align: left;
+  justify-content: center;
+  transform: translate(-50%, -50%); /* Centraliza exatamente no meio da tela */
+}
+
+#title-modal-info-emprestimo {
+  padding: 10px 0px 0px;
+  text-align: center;
+}
+
 .titleEmprestimo {
   padding: 10px 0px 10px 0px;
 }
@@ -383,3 +393,30 @@ main {
 #emprestimoSection {
   display: none;
 }
+
+.details-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px; /* Ajuste para ficar igual aos outros botões */
+  height: 35px;
+  padding: 0;
+  border: none;
+  border-radius: 50%; /* Mantém o formato arredondado */
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  background-color: #3498db; /* Azul para combinar com um padrão visual */
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.details-btn:hover {
+  background-color: #2980b9; /* Tom mais escuro ao passar o mouse */
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.details-btn i {
+  font-size: 18px; /* Ajuste do tamanho do ícone */
+}
+
