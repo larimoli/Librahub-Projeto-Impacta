@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link para os ícones do FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link para o CSS externo -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pesquisa.css">
+    <!-- Ícone do site (favicon) -->
+    <link rel="shortcut icon" href="img/favicon/L -favicon.png" type="image/x-icon">
+    <title>LibraHub</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="scripts/script.js"></script>
+    <link rel="icon" href="../client/assets/img/librahub-novo.png" type="image/png">
+</head>
+<body>
+
+    <!-- Cabeçalho do site -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">LIBRAHUB</a></h1>
+            </div>
+
+            <!-- Ícones de navegação -->
+            <div class="botao">
+                <nav class="icone">
+                    <a href="pesquisa.html" target="_self" aria-label="Pesquisar"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href="#" id="openModal" aria-label="Abrir cadastro"><i class="fa-solid fa-plus"></i></a>
+                </nav>
+            </div>    
+        </div>        
+    </header> 
+
+    <!-- Modal (caixa de cadastro) -->
+    <div id="myModal" class="modal">
+        <div class="modal-cadastro">
+            <span class="close" id="closeModal">&times;</span>
+            <main class="cadastro">
+                <form action="#">
+                    <h1>Cadastro</h1>
+
+                    <!-- Campo de título -->
+                    <div class="input-box">
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" name="titulo">
+                    </div> 
+                    
+                    <!-- Campo de autor -->
+                    <div class="input-box">
+                        <label for="autor">Autor(a)</label>
+                        <input type="text" id="autor" name="autor">
+                    </div>
+                    
+                    <!-- Campo de lançamento -->
+                    <div class="input-box">
+                        <label for="lancamento">Lançamento</label>
+                        <input type="date" id="lancamento" name="lancamento">
+                    </div>                    
+                     
+                    <!-- Opção de disponibilidade -->
+                    <div class="input-box">
+                        <label>Disponível</label>
+                        <div class="radio-group">
+                            <label for="disponivel-sim">
+                                <input type="radio" id="disponivel-sim" name="disponivel" value="sim">
+                                Sim
+                            </label>
+                            <label for="disponivel-nao">
+                                <input type="radio" id="disponivel-nao" name="disponivel" value="nao">
+                                Não
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Botão de envio -->
+                    <button type="submit" class="button">Cadastrar</button>
+                </form>
+             </main>           
+        </div>
+    </div>
+
+    <!-- Mensagem de Sucesso ou Erro -->
+    <div id="mensagem" class="mensagem"></div> 
+
+    <script src="scripts/pesquisa.js"></script>
+
+    <main>
+        <div class="livro">
+            <img src="assets/img/librahub-novo.png" alt="imagem de livro aberto">
+        </div>
+    </main>
+</body>
+</html>

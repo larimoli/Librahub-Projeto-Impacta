@@ -1,0 +1,26 @@
+{
+  "books": [
+    {
+      "nome": "A Mágica da Arrumação",
+      "autor": "Marie Kondo",
+      "lancamento": "2014-03-27",
+      "disponivel": false,
+      "emprestimo": {
+        "nome": "Marcos Vinicius Oliveira",
+        "endereco": "Rua da Cidade 123",
+        "telefone": "1120212223",
+        "cpf": "44455577788",
+        "dataEmprestimo": "2025-05-28",
+        "dataDevolucao": "2025-06-02"
+      },
+      "id": "5"
+    },
+    {
+      "nome": "O Senhor dos Anéis",
+      "autor": "J.R.R. Tolkien",
+      "lancamento": "1954-07-29",
+      "disponivel": true,
+      "id": "1"
+    }
+  ]
+}
