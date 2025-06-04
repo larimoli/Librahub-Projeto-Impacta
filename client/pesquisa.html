@@ -13,6 +13,7 @@
     <title>LibraHub</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="scripts/script.js"></script>
+    <link rel="icon" href="../client/assets/img/librahub-novo.png" type="image/png">
 </head>
 <body>
 
@@ -80,6 +81,43 @@
             <option value="false">Não</option>
           </select>
         </div>
+
+        <!-- Bloco de informações de emprestimo de Livro -->
+    <div id="emprestimoSection"> <!--Colocar um display:none e margin-top: 20px-->
+
+      <h3 class="titleEmprestimo">Cadastro de Empréstimo de Livro</h3>
+
+        <div class="input-box">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome">
+        </div>
+
+        <div class="input-box">
+          <label for="endereco">Endereço</label>
+          <input type="text" id="endereco" name="endereco">
+        </div>
+
+        <div class="input-box">
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" name="telefone">
+        </div>
+
+        <div class="input-box">
+          <label for="cpf">CPF</label>
+          <input type="text" id="cpf" name="cpf" maxlength="14" placeholder="000.000.000.00">
+        </div>
+
+        <div class="input-box">
+          <label for="dataEmprestimo">Data de Empréstimo</label>
+          <input type="date" id="dataEmprestimo" name="dataEmprestimo">
+        </div>
+
+        <div class="input-box">
+          <label for="dataDevolucao">Data de Devolução</label>
+          <input type="date" id="dateDevolucao" name="dataDevolucao">
+        </div>
+
+    </div>
   
         <div class="modal-actions">
           <button type="button" class="cancel-btn" onclick="closeEditModal()">Cancelar</button>
@@ -93,15 +131,39 @@
   <!--Modal de Mensagem de Exclusão-->
   <div id="deleteModal" class="modal-exclusao">
     <div class="modal-content">
-      <p>Tem certeza que deseja excluir este livro?</p>
-      <button id="confirmDelete">Excluir</button>
-      <button id="cancelDelete">Cancelar</button>
+      <p id="paragrafo-exclusao">Tem certeza que deseja excluir este livro?</p>
+      <div class="button-exclusao">
+        <button id="confirmDelete">Excluir</button>
+        <button id="cancelDelete">Cancelar</button>
+      </div>
     </div>
   </div>
 
   <!--Notificação de Livro Excluido com Sucesso-->
   <div id="message" class="message"></div>
-  
+
+  <!--Modal de detalhes do empréstimo do livro-->
+  <div id="detailsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeDetailsModal()">&times;</span>
+    <h2 id="title-modal-info-emprestimo">Detalhes do Livro</h2>
+    <p><strong>Título:</strong> <span id="detailsTitle"></span></p>
+    <p><strong>Autor:</strong> <span id="detailsAuthor"></span></p>
+    <p><strong>Lançamento:</strong> <span id="detailsYear"></span></p>
+    <p><strong>Disponível:</strong> <span id="detailsAvailable"></span></p>
+    
+    <div id="loanDetails">
+      <h2 id="title-modal-info-emprestimo">Informações do Empréstimo</h2>
+      <p><strong>Nome:</strong> <span id="borrowerName"></span></p>
+      <p><strong>Endereço:</strong> <span id="borrowerAddress"></span></p>
+      <p><strong>Telefone:</strong> <span id="borrowerPhone"></span></p>
+      <p><strong>CPF:</strong> <span id="borrowerCPF"></span></p>
+      <p><strong>Data do Empréstimo:</strong> <span id="borrowDate"></span></p>
+      <p><strong>Data de Devolução:</strong> <span id="returnDate"></span></p>
+    </div>
+  </div>
+</div>
+
 
     <script src="scripts/pesquisa.js"></script>
 
