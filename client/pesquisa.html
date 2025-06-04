@@ -13,6 +13,7 @@
     <title>LibraHub</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="scripts/script.js"></script>
+    <link rel="icon" href="../client/assets/img/librahub-novo.png" type="image/png">
 </head>
 <body>
 
@@ -130,15 +131,39 @@
   <!--Modal de Mensagem de Exclusão-->
   <div id="deleteModal" class="modal-exclusao">
     <div class="modal-content">
-      <p>Tem certeza que deseja excluir este livro?</p>
-      <button id="confirmDelete">Excluir</button>
-      <button id="cancelDelete">Cancelar</button>
+      <p id="paragrafo-exclusao">Tem certeza que deseja excluir este livro?</p>
+      <div class="button-exclusao">
+        <button id="confirmDelete">Excluir</button>
+        <button id="cancelDelete">Cancelar</button>
+      </div>
     </div>
   </div>
 
   <!--Notificação de Livro Excluido com Sucesso-->
   <div id="message" class="message"></div>
-  
+
+  <!--Modal de detalhes do empréstimo do livro-->
+  <div id="detailsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeDetailsModal()">&times;</span>
+    <h2 id="title-modal-info-emprestimo">Detalhes do Livro</h2>
+    <p><strong>Título:</strong> <span id="detailsTitle"></span></p>
+    <p><strong>Autor:</strong> <span id="detailsAuthor"></span></p>
+    <p><strong>Lançamento:</strong> <span id="detailsYear"></span></p>
+    <p><strong>Disponível:</strong> <span id="detailsAvailable"></span></p>
+    
+    <div id="loanDetails">
+      <h2 id="title-modal-info-emprestimo">Informações do Empréstimo</h2>
+      <p><strong>Nome:</strong> <span id="borrowerName"></span></p>
+      <p><strong>Endereço:</strong> <span id="borrowerAddress"></span></p>
+      <p><strong>Telefone:</strong> <span id="borrowerPhone"></span></p>
+      <p><strong>CPF:</strong> <span id="borrowerCPF"></span></p>
+      <p><strong>Data do Empréstimo:</strong> <span id="borrowDate"></span></p>
+      <p><strong>Data de Devolução:</strong> <span id="returnDate"></span></p>
+    </div>
+  </div>
+</div>
+
 
     <script src="scripts/pesquisa.js"></script>
 
