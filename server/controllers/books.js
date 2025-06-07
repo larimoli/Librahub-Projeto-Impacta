@@ -15,7 +15,7 @@ export const getBooks = (_, res) => {
 
 export const getBookById = (req, res) => {
     const q = "SELECT * FROM livros WHERE id = ?";
-  
+
     db.query(q, [req.params.id], (err, result) => {
         if (err) {
             console.error("Erro ao buscar livro:", err);
@@ -24,9 +24,28 @@ export const getBookById = (req, res) => {
         if (result.length === 0) {
             return res.status(404).json({ message: "Livro não encontrado!" });
         }
-        res.status(200).json(result[0]); // Retorna apenas um livro
+
+        const livro = result[0];
+
+        const livroFormatado = {
+            id: livro.id,
+            nome: livro.nome,
+            autor: livro.autor,
+            lancamento: livro.lancamento,
+            disponivel: livro.disponivel,
+            emprestimo: livro.disponivel ? null : { 
+                nome_cliente: livro.nome_cliente,
+                endereco: livro.endereco,
+                telefone: livro.telefone,
+                cpf: livro.cpf,
+                data_emprestimo: livro.data_emprestimo,
+                data_devolucao: livro.data_devolucao
+            }
+        };
+
+        res.status(200).json(livroFormatado);
     });
-  };
+};
 
 export const addBooks = (req, res) => {
     const q = 
@@ -36,7 +55,7 @@ export const addBooks = (req, res) => {
         req.body.nome, 
         req.body.autor, 
         req.body.lancamento,
-        req.body.disponivel,
+        req.body.disponivel
     ];
 
     db.query(q, [values], (err) => {
@@ -56,13 +75,21 @@ export const addBooks = (req, res) => {
 
 export const updateBooks = (req, res) => {
     console.log("Recebendo atualização para ID:", req.params.id);
-    const q = "UPDATE livros SET nome = ?, autor = ?, lancamento = ?, disponivel = ? WHERE id = ?";
+    console.log("Dados recebidos pelo back-end:", req.body);
+    const { nome, autor, lancamento, disponivel, emprestimo } = req.body;
+    const q = "UPDATE livros SET nome = ?, autor = ?, lancamento = ?, disponivel = ?, nome_cliente = ?, endereco = ?, telefone = ?, cpf = ?, data_emprestimo = ?, data_devolucao = ? WHERE id = ?";
 
-    const values = [
-        req.body.nome, 
-        req.body.autor, 
-        req.body.lancamento, 
-        req.body.disponivel,
+   const values = [
+        nome, 
+        autor, 
+        lancamento, 
+        disponivel,
+        emprestimo?.nome_cliente, 
+        emprestimo?.endereco, 
+        emprestimo?.telefone, 
+        emprestimo?.cpf || "", 
+        emprestimo?.data_emprestimo, 
+        emprestimo?.data_devolucao, 
         req.params.id
     ];
 
