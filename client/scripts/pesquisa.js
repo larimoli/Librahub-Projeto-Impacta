@@ -77,11 +77,12 @@ async function openEditModal(id) {
   try {
     const response = await axios.get(`http://localhost:8800/books/${id}`);
     const book = response.data;
+    const dataLancamento = book.lancamento ? new Date(book.lancamento).toISOString().split("T")[0] : "";
 
     document.getElementById('editId').value = book.id;
     document.getElementById('editNome').value = book.nome;
     document.getElementById('editAutor').value = book.autor;
-    document.getElementById('editLancamento').value = book.lancamento;
+    document.getElementById('editLancamento').value = dataLancamento;
     document.getElementById('editDisponivel').value = book.disponivel;
 
     document.getElementById('editModal').style.display = 'block';
@@ -113,16 +114,17 @@ document.getElementById('editForm').addEventListener('submit', async function (e
   const emprestimoNome = emprestimoSection.querySelector('input[name=nome]').value
   if (emprestimoNome) {
     updatedBook['emprestimo'] = {
-      nome: emprestimoNome,
+      nome_cliente: emprestimoNome,
       endereco: emprestimoSection.querySelector('input[name=endereco]').value,
       telefone: emprestimoSection.querySelector('input[name=telefone]').value,
       cpf: emprestimoSection.querySelector('input[name=cpf]').value,
-      dataEmprestimo: emprestimoSection.querySelector('input[name=dataEmprestimo]').value,
-      dataDevolucao: emprestimoSection.querySelector('input[name=dataDevolucao]').value
+      data_emprestimo: emprestimoSection.querySelector('input[name=dataEmprestimo]').value,
+      data_devolucao: emprestimoSection.querySelector('input[name=dataDevolucao]').value
     }
   }
 
   try {
+    console.log('dados que estão sendo enviados', updatedBook);    
     await axios.put(`http://localhost:8800/books/${id}`, updatedBook);
     closeEditModal();
     getBooks(); // Atualiza a lista
@@ -232,12 +234,12 @@ async function showBookDetails(id) {
     // Se o livro estiver emprestado, mostrar os detalhes do empréstimo
     if (!book.disponivel && book.emprestimo) {
       console.log("Dados do empréstimo:", book.emprestimo);
-      document.getElementById('borrowerName').textContent = book.emprestimo.nome;
+      document.getElementById('borrowerName').textContent = book.emprestimo.nome_cliente;
       document.getElementById('borrowerAddress').textContent = book.emprestimo.endereco;
       document.getElementById('borrowerPhone').textContent = book.emprestimo.telefone;
       document.getElementById('borrowerCPF').textContent = book.emprestimo.cpf;
-      document.getElementById('borrowDate').textContent = new Date(book.emprestimo.dataEmprestimo).toLocaleDateString();
-      document.getElementById('returnDate').textContent = new Date(book.emprestimo.dataDevolucao).toLocaleDateString();
+      document.getElementById('borrowDate').textContent = new Date(book.emprestimo.data_emprestimo).toLocaleDateString();
+      document.getElementById('returnDate').textContent = new Date(book.emprestimo.data_devolucao).toLocaleDateString();
       document.getElementById('loanDetails').style.display = 'block';
     } else {
       document.getElementById('loanDetails').style.display = 'none';
